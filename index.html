@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sendo Vento - fé, propósito e caminhada.">
+    <title>Sendo Vento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <div class="header-menus" id="menu-mobile">
+                <nav class="header-nav header-nav--esq" aria-label="Menu principal">
+                    <a href="#home" class="active">Home</a>
+                    <a href="palestras.html">Palestras</a>
+                    <a href="livros.html">Livros</a>
+                </nav>
+
+                <nav class="header-nav header-nav--dir" aria-label="Menu secundário">
+                    <a href="depoimentos.html">Depoimentos</a>
+                    <!-- TODO: trocar o # pela URL da plataforma de doações -->
+                    <a href="#">Doações</a>
+                    <!-- TODO: trocar o # pela URL do canal no YouTube -->
+                    <a href="#" class="header-canal" rel="noopener" target="_blank">YouTube</a>
+                </nav>
+            </div>
+
+            <a class="logo" href="#home" data-vento>Sendo Vento</a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-inner">
+                <h1 data-vento>Sendo Vento</h1>
+                <p class="hero-sub">Fé &middot; Propósito &middot; Caminhada</p>
+            </div>
+
+            <nav class="hero-hub" aria-label="Atalhos">
+                <a href="#servicos">Serviços</a>
+                <a href="palestras.html">Palestras</a>
+                <a href="livros.html">Livros</a>
+                <a href="depoimentos.html">Depoimentos</a>
+            </nav>
+        </section>
+
+        <!-- Serviços -->
+        <section class="section section--bege" id="servicos">
+            <div class="container">
+                <header class="section-head">
+                    <p class="eyebrow">Serviços</p>
+                    <h2>Como podemos <em>caminhar</em> com você</h2>
+                </header>
+
+                <div class="grade grade--3">
+                    <article class="card">
+                        <h3>Lorem ipsum</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Dolor sit amet</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Consectetur</h3>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Livros -->
+        <section class="section" id="livros">
+            <div class="container">
+                <header class="section-head">
+                    <p class="eyebrow">Livros</p>
+                    <h2>O que você está <em>buscando</em>?</h2>
+                </header>
+
+                <div class="grade grade--4">
+                    <article class="produto">
+                        <p class="produto-topo">Precisa de direção?</p>
+                        <div class="produto-midia" aria-hidden="true">Capa</div>
+                        <h3>Lorem Ipsum</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a class="btn" href="livros.html">Ver mais</a>
+                    </article>
+                    <article class="produto">
+                        <p class="produto-topo">Se sente só?</p>
+                        <div class="produto-midia" aria-hidden="true">Capa</div>
+                        <h3>Dolor Sit</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                        <a class="btn" href="livros.html">Ver mais</a>
+                    </article>
+                    <article class="produto">
+                        <p class="produto-topo">Cansado?</p>
+                        <div class="produto-midia" aria-hidden="true">Capa</div>
+                        <h3>Amet Consectetur</h3>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                        <a class="btn" href="livros.html">Ver mais</a>
+                    </article>
+                    <article class="produto">
+                        <p class="produto-topo">Quer começar?</p>
+                        <div class="produto-midia" aria-hidden="true">Capa</div>
+                        <h3>Adipiscing Elit</h3>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+                        <a class="btn" href="ebooks.html">Ebook grátis</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ebook -->
+        <section class="section section--bege" id="ebook">
+            <div class="container">
+                <div class="promo">
+                    <div class="promo-midia" aria-hidden="true">Capa do ebook</div>
+                    <div>
+                        <p class="eyebrow">Material gratuito</p>
+                        <h2>Lorem ipsum dolor sit amet consectetur</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <a class="btn" href="ebooks.html">Quero o ebook</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Canal no YouTube -->
+        <section class="banner-canal">
+            <h2>Sendo Vento no YouTube</h2>
+            <p>Vídeos novos toda semana</p>
+            <!-- TODO: trocar o # pela URL do canal no YouTube -->
+            <a class="btn btn--claro" href="#" rel="noopener" target="_blank">Assistir no YouTube</a>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="faixa faixa--noite" id="depoimentos">
+            <div class="container container--estreito">
+                <p class="eyebrow eyebrow--claro">Depoimentos</p>
+                <blockquote class="citacao">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore.
+                </blockquote>
+                <p class="citacao-autor">Lorem Ipsum &middot; Cidade</p>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section class="section" id="contato">
+            <div class="container">
+                <header class="section-head">
+                    <p class="eyebrow">Contato</p>
+                    <h2>Fale com a gente</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+                </header>
+
+                <!-- TODO: definir o destino do envio (Brevo ou e-mail) -->
+                <form class="contato-form" action="" method="POST">
+                    <div class="campo">
+                        <label for="contato-nome">Nome <em>(obrigatório)</em></label>
+                        <input type="text" id="contato-nome" name="NOME" autocomplete="name" required>
+                    </div>
+                    <div class="campo">
+                        <label for="contato-email">E-mail <em>(obrigatório)</em></label>
+                        <input type="email" id="contato-email" name="EMAIL" autocomplete="email" required>
+                    </div>
+                    <div class="campo">
+                        <label for="contato-mensagem">Mensagem <em>(obrigatório)</em></label>
+                        <textarea id="contato-mensagem" name="MENSAGEM" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar mensagem</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section class="recursos">
+            <div class="recursos-inner">
+                <p class="eyebrow eyebrow--claro">Outros recursos</p>
+                <nav class="recursos-lista" aria-label="Recursos">
+                    <a href="palestras.html">Palestras</a>
+                    <a href="livros.html">Livros</a>
+                    <a href="produtos.html">Produtos</a>
+                    <a href="ebooks.html">Ebooks</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-topo">
+                <div class="footer-bio">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                    <div class="footer-redes">
+                        <a href="#">Instagram</a>
+                        <a href="#">YouTube</a>
+                        <a href="#">Facebook</a>
+                    </div>
+                </div>
+
+                <div class="footer-marca">
+                    <a class="logo" href="#home" data-vento>Sendo Vento</a>
+                </div>
+
+                <div class="footer-cta">
+                    <p>Receba o ebook gratuito</p>
+                    <a class="link-regua" href="ebooks.html">Quero receber</a>
+                </div>
+            </div>
+
+            <nav class="footer-menu" aria-label="Menu do rodapé">
+                <a href="#home">Home</a>
+                <a href="#servicos">Serviços</a>
+                <a href="palestras.html">Palestras</a>
+                <a href="livros.html">Livros</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="depoimentos.html">Depoimentos</a>
+                <a href="#contato">Contato</a>
+                <!-- TODO: trocar o # pela URL da plataforma de doações -->
+                <a href="#">Doações</a>
+            </nav>
+        </div>
+
+        <div class="footer-base">
+            <p>&copy; 2026 Codetria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
