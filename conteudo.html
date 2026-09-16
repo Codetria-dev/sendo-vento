@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Baixe o ebook gratuito de Você Tem Jeito - fé, propósito e caminhada.">
-    <title>Ebooks — Você Tem Jeito</title>
+    <meta name="description" content="Artigos, vídeos e ensinamentos de Você Tem Jeito - fé, propósito e caminhada.">
+    <title>Conteúdo — Você Tem Jeito</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
                 <nav class="header-nav" aria-label="Menu principal">
                     <a href="index.html">Home</a>
                     <a href="sobre.html">Sobre</a>
-                    <a href="conteudo.html">Conteúdo</a>
+                    <a href="conteudo.html" class="active">Conteúdo</a>
                     <a href="livros.html">Livros</a>
                     <a href="historias.html">Histórias</a>
                     <a href="convites.html">Convites</a>
@@ -33,68 +33,51 @@
     </header>
 
     <main>
-        <section class="section">
+        <section class="section" id="conteudo">
             <div class="container">
                 <header class="section-head">
-                    <p class="eyebrow">Material gratuito</p>
-                    <h1>Ebooks</h1>
+                    <p class="eyebrow">Conteúdo</p>
+                    <h1>Conteúdo</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
                 </header>
 
-                <div class="ebook">
-                    <div class="ebook-cover" aria-hidden="true">
-                        <span class="ebook-cover-tag">Ebook</span>
-                        <span class="ebook-cover-title">Você Tem Jeito</span>
-                        <span class="ebook-cover-label">Capa</span>
-                    </div>
-
-                    <div class="ebook-content">
-                        <p class="eyebrow">Download gratuito</p>
-                        <h2>Lorem ipsum dolor sit amet consectetur</h2>
-                        <p class="ebook-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniam, quis nostrud exercitation ullamco laboris.
-                        </p>
-                        <ul class="ebook-lista">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Sed do eiusmod tempor incididunt ut labore et dolore.</li>
-                            <li>Ut enim ad minim veniam, quis nostrud exercitation.</li>
-                            <li>Duis aute irure dolor in reprehenderit in voluptate.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="ebook-form-wrap">
-                    <h2>Receba o ebook</h2>
-                    <p>Preencha seus dados e enviamos o material no seu e-mail.</p>
-
-                    <!--
-                        TODO (Brevo): trocar o action pelo endpoint do formulário
-                        do Brevo e alinhar os `name` dos campos com os atributos
-                        da lista (EMAIL, FIRSTNAME...).
-                    -->
-                    <form class="ebook-form" action="" method="POST">
-                        <div class="campo">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="FIRSTNAME" autocomplete="given-name" required>
-                        </div>
-
-                        <div class="campo">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="EMAIL" autocomplete="email" required>
-                        </div>
-
-                        <label class="consentimento">
-                            <input type="checkbox" name="CONSENTIMENTO" required>
-                            <span>
-                                Concordo em receber comunicações de Você Tem Jeito e autorizo o
-                                tratamento dos meus dados conforme a LGPD.
-                            </span>
-                        </label>
-
-                        <button type="submit" class="btn btn--largo">Quero receber o ebook</button>
-                    </form>
+                <div class="grade grade--3">
+                    <article class="card">
+                        <p class="produto-topo">Artigo</p>
+                        <h3>Lorem Ipsum</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                        <a class="btn" href="#">Ler</a>
+                    </article>
+                    <article class="card">
+                        <p class="produto-topo">Vídeo</p>
+                        <h3>Dolor Sit</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                        <a class="btn" href="#">Assistir</a>
+                    </article>
+                    <article class="card">
+                        <p class="produto-topo">Devocional</p>
+                        <h3>Amet Consectetur</h3>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+                        <a class="btn" href="#">Ler</a>
+                    </article>
+                    <article class="card">
+                        <p class="produto-topo">Podcast</p>
+                        <h3>Adipiscing Elit</h3>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
+                        <a class="btn" href="#">Ouvir</a>
+                    </article>
+                    <article class="card">
+                        <p class="produto-topo">Artigo</p>
+                        <h3>Sed Eiusmod</h3>
+                        <p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+                        <a class="btn" href="#">Ler</a>
+                    </article>
+                    <article class="card">
+                        <p class="produto-topo">Vídeo</p>
+                        <h3>Veniam Quis</h3>
+                        <p>Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a class="btn" href="#">Assistir</a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -103,10 +86,10 @@
             <div class="recursos-inner">
                 <p class="eyebrow eyebrow--claro">Outros recursos</p>
                 <nav class="recursos-lista" aria-label="Recursos">
-                    <a href="convites.html">Convites</a>
                     <a href="livros.html">Livros</a>
                     <a href="historias.html">Histórias</a>
-                    <a href="produtos.html">Produtos</a>
+                    <a href="convites.html">Convites</a>
+                    <a href="ebooks.html">Ebooks</a>
                 </nav>
             </div>
         </section>

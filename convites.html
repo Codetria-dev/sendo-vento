@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Convite para palestras com o Sendo Vento - fé, propósito e caminhada.">
-    <title>Palestras — Sendo Vento</title>
+    <meta name="description" content="Convites para palestras com Você Tem Jeito - fé, propósito e caminhada.">
+    <title>Convites — Você Tem Jeito</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="site-header" id="site-header">
         <div class="container header-inner">
-            <div class="header-menus" id="menu-mobile">
-                <nav class="header-nav header-nav--esq" aria-label="Menu principal">
-                    <a href="index.html">Home</a>
-                    <a href="palestras.html" class="active">Palestras</a>
-                    <a href="livros.html">Livros</a>
-                </nav>
+            <a class="logo" href="index.html">Você Tem Jeito</a>
 
-                <nav class="header-nav header-nav--dir" aria-label="Menu secundário">
-                    <a href="depoimentos.html">Depoimentos</a>
-                    <!-- TODO: trocar o # pela URL da plataforma de doações -->
-                    <a href="#">Doações</a>
-                    <!-- TODO: trocar o # pela URL do canal no YouTube -->
-                    <a href="#" class="header-canal" rel="noopener" target="_blank">YouTube</a>
+            <div class="header-menus" id="menu-mobile">
+                <nav class="header-nav" aria-label="Menu principal">
+                    <a href="index.html">Home</a>
+                    <a href="sobre.html">Sobre</a>
+                    <a href="conteudo.html">Conteúdo</a>
+                    <a href="livros.html">Livros</a>
+                    <a href="historias.html">Histórias</a>
+                    <a href="convites.html" class="active">Convites</a>
+                    <a href="index.html#contato">Contato</a>
                 </nav>
             </div>
-
-            <a class="logo" href="index.html" data-vento>Sendo Vento</a>
 
             <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
                 <span></span>
@@ -37,13 +33,13 @@
     </header>
 
     <main>
-        <section class="section" id="palestras">
+        <section class="section" id="convites">
             <div class="container">
                 <header class="section-head">
-                    <p class="eyebrow">Palestras</p>
+                    <p class="eyebrow">Convites</p>
                     <h1>Convite para palestras</h1>
                     <p>
-                        Obrigado pelo interesse em ter o Sendo Vento no seu evento! Ficamos
+                        Obrigado pelo interesse em ter Você Tem Jeito no seu evento! Ficamos
                         gratos pelo convite. Para que a nossa equipe possa te atender bem e
                         responder o quanto antes, preencha as informações abaixo e entraremos
                         em contato.
@@ -55,21 +51,21 @@
                     do Brevo e alinhar os `name` dos campos com os atributos
                     da lista (EMAIL, FIRSTNAME, LASTNAME...).
                 -->
-                <form class="contato-form palestras-form" action="" method="POST">
+                <form class="contato-form convites-form" action="" method="POST">
                     <div class="form-duplo">
                         <div class="campo">
-                            <label for="palestra-nome">Nome <em>(obrigatório)</em></label>
-                            <input type="text" id="palestra-nome" name="FIRSTNAME" autocomplete="given-name" required>
+                            <label for="convite-nome">Nome <em>(obrigatório)</em></label>
+                            <input type="text" id="convite-nome" name="FIRSTNAME" autocomplete="given-name" required>
                         </div>
                         <div class="campo">
-                            <label for="palestra-sobrenome">Sobrenome <em>(obrigatório)</em></label>
-                            <input type="text" id="palestra-sobrenome" name="LASTNAME" autocomplete="family-name" required>
+                            <label for="convite-sobrenome">Sobrenome <em>(obrigatório)</em></label>
+                            <input type="text" id="convite-sobrenome" name="LASTNAME" autocomplete="family-name" required>
                         </div>
                     </div>
 
                     <div class="campo">
-                        <label for="palestra-email">E-mail <em>(obrigatório)</em></label>
-                        <input type="email" id="palestra-email" name="EMAIL" autocomplete="email" required>
+                        <label for="convite-email">E-mail <em>(obrigatório)</em></label>
+                        <input type="email" id="convite-email" name="EMAIL" autocomplete="email" required>
                     </div>
 
                     <label class="consentimento">
@@ -78,43 +74,43 @@
                     </label>
 
                     <div class="campo">
-                        <label for="palestra-organizacao">Nome da igreja ou organização <em>(obrigatório)</em></label>
-                        <input type="text" id="palestra-organizacao" name="ORGANIZACAO" autocomplete="organization" required>
+                        <label for="convite-organizacao">Nome da igreja ou organização <em>(obrigatório)</em></label>
+                        <input type="text" id="convite-organizacao" name="ORGANIZACAO" autocomplete="organization" required>
                     </div>
 
                     <div class="campo">
-                        <label for="palestra-cargo">Seu cargo ou função <em>(obrigatório)</em></label>
-                        <input type="text" id="palestra-cargo" name="CARGO" autocomplete="organization-title" required>
+                        <label for="convite-cargo">Seu cargo ou função <em>(obrigatório)</em></label>
+                        <input type="text" id="convite-cargo" name="CARGO" autocomplete="organization-title" required>
                     </div>
 
                     <div class="campo">
-                        <label for="palestra-telefone">Seu telefone <em>(obrigatório)</em></label>
-                        <input type="tel" id="palestra-telefone" name="TELEFONE" autocomplete="tel" required>
+                        <label for="convite-telefone">Seu telefone <em>(obrigatório)</em></label>
+                        <input type="tel" id="convite-telefone" name="TELEFONE" autocomplete="tel" required>
                     </div>
 
                     <div class="campo">
-                        <label for="palestra-datas">Datas da palestra <em>(obrigatório)</em></label>
-                        <input type="date" id="palestra-datas" name="DATAS" required>
+                        <label for="convite-datas">Datas da palestra <em>(obrigatório)</em></label>
+                        <input type="date" id="convite-datas" name="DATAS" required>
                     </div>
 
                     <div class="campo">
-                        <label for="palestra-evento">Informações sobre o seu evento <em>(obrigatório)</em></label>
-                        <textarea id="palestra-evento" name="EVENTO" rows="6" required></textarea>
+                        <label for="convite-evento">Informações sobre o seu evento <em>(obrigatório)</em></label>
+                        <textarea id="convite-evento" name="EVENTO" rows="6" required></textarea>
                     </div>
 
                     <div class="campo">
-                        <label for="palestra-aeroporto">Aeroporto mais próximo <em>(obrigatório)</em></label>
-                        <input type="text" id="palestra-aeroporto" name="AEROPORTO" required>
+                        <label for="convite-aeroporto">Aeroporto mais próximo <em>(obrigatório)</em></label>
+                        <input type="text" id="convite-aeroporto" name="AEROPORTO" required>
                     </div>
 
                     <div class="campo">
-                        <label for="palestra-como-servir">Como o Sendo Vento pode servir melhor o seu público? <em>(obrigatório)</em></label>
-                        <textarea id="palestra-como-servir" name="COMO_SERVIR" rows="6" required></textarea>
+                        <label for="convite-como-servir">Como Você Tem Jeito pode servir melhor o seu público? <em>(obrigatório)</em></label>
+                        <textarea id="convite-como-servir" name="COMO_SERVIR" rows="6" required></textarea>
                     </div>
 
                     <label class="consentimento">
                         <input type="checkbox" name="CONSENTIMENTO" required>
-                        <span>Concordo em receber comunicações do Sendo Vento e autorizo o
+                        <span>Concordo em receber comunicações de Você Tem Jeito e autorizo o
                         tratamento dos meus dados conforme a LGPD.</span>
                     </label>
 
@@ -128,9 +124,9 @@
                 <p class="eyebrow eyebrow--claro">Outros recursos</p>
                 <nav class="recursos-lista" aria-label="Recursos">
                     <a href="livros.html">Livros</a>
+                    <a href="historias.html">Histórias</a>
                     <a href="produtos.html">Produtos</a>
                     <a href="ebooks.html">Ebooks</a>
-                    <a href="depoimentos.html">Depoimentos</a>
                 </nav>
             </div>
         </section>
@@ -149,7 +145,7 @@
                 </div>
 
                 <div class="footer-marca">
-                    <a class="logo" href="index.html" data-vento>Sendo Vento</a>
+                    <a class="logo" href="index.html">Você Tem Jeito</a>
                 </div>
 
                 <div class="footer-cta">
@@ -160,11 +156,12 @@
 
             <nav class="footer-menu" aria-label="Menu do rodapé">
                 <a href="index.html#home">Home</a>
-                <a href="index.html#servicos">Serviços</a>
-                <a href="palestras.html">Palestras</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="conteudo.html">Conteúdo</a>
                 <a href="livros.html">Livros</a>
+                <a href="historias.html">Histórias</a>
+                <a href="convites.html">Convites</a>
                 <a href="produtos.html">Produtos</a>
-                <a href="depoimentos.html">Depoimentos</a>
                 <a href="index.html#contato">Contato</a>
                 <!-- TODO: trocar o # pela URL da plataforma de doações -->
                 <a href="#">Doações</a>

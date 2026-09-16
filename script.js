@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sendo Vento — comportamento da página
+   Você Tem Jeito — comportamento da página
    ========================================================================== */
 
 (function () {
@@ -12,8 +12,7 @@
     var sections = document.querySelectorAll('main section[id]');
 
     /* --- Menu mobile ------------------------------------------------------
-       Um único painel guarda os dois grupos de navegação (esquerda e
-       direita), então abrir/fechar é uma classe só.
+       O painel guarda a navegação inteira, então abrir/fechar é uma classe só.
        -------------------------------------------------------------------- */
 
     function setMenu(aberto) {
@@ -44,8 +43,8 @@
         navLinks.forEach(function (link) {
             var href = link.getAttribute('href');
 
-            /* Links para outras páginas (# vazio, ebooks.html) não participam
-               do scroll spy — mantêm o .active definido no próprio HTML. */
+            /* Links para outras páginas não participam do scroll spy — mantêm
+               o .active definido no próprio HTML. */
             if (href.charAt(0) !== '#' || href === '#') {
                 return;
             }
@@ -68,42 +67,6 @@
     sections.forEach(function (section) {
         observer.observe(section);
     });
-
-    /* --- Nome ao vento ----------------------------------------------------
-       Quebra "Sendo Vento" em spans para dar a cada letra um delay próprio.
-       O texto original vai para o aria-label e as letras ficam aria-hidden,
-       para leitores de tela não soletrarem o nome.
-       -------------------------------------------------------------------- */
-
-    function soprarNome(elemento) {
-        var texto = elemento.textContent.trim();
-
-        elemento.setAttribute('aria-label', texto);
-        elemento.textContent = '';
-
-        var fragmento = document.createDocumentFragment();
-        var indice = 0;
-
-        texto.split('').forEach(function (letra) {
-            if (letra === ' ') {
-                fragmento.appendChild(document.createTextNode(' '));
-                return;
-            }
-
-            var span = document.createElement('span');
-            span.className = 'letra';
-            span.setAttribute('aria-hidden', 'true');
-            span.style.setProperty('--i', indice);
-            span.textContent = letra;
-            fragmento.appendChild(span);
-
-            indice++;
-        });
-
-        elemento.appendChild(fragmento);
-    }
-
-    document.querySelectorAll('[data-vento]').forEach(soprarNome);
 
     /* --- Listeners globais ------------------------------------------------ */
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sendo Vento — estilos base
+   Você Tem Jeito — estilos base
 
    PALETA (tons de verde e bege, nada saturado)
    Verde claro · verde militar · verde escuro · bege amarronzado · branco
@@ -197,7 +197,7 @@ img {
 }
 
 /* ==========================================================================
-   Header — logo centralizado, nav dividida nos dois lados
+   Header — logo à esquerda, menu alinhado à direita
    ========================================================================== */
 
 .site-header {
@@ -214,34 +214,23 @@ img {
 }
 
 .header-inner {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
     align-items: center;
-    gap: 24px;
+    justify-content: space-between;
+    gap: 32px;
     height: var(--header-height);
 }
 
-/* No desktop o wrapper se dissolve no grid, deixando as duas navs como
-   itens diretos. No mobile ele vira o painel do menu. */
+/* No desktop o wrapper se dissolve e a nav vira item direto do flex. No
+   mobile ele volta a existir como painel do menu. */
 .header-menus {
     display: contents;
 }
 
 .header-nav {
     display: flex;
-    gap: 28px;
+    gap: 24px;
     align-items: center;
-}
-
-.header-nav--esq {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.header-nav--dir {
-    grid-column: 3;
-    grid-row: 1;
-    justify-content: flex-end;
 }
 
 .header-nav a {
@@ -281,20 +270,13 @@ img {
     transform: scaleX(1);
 }
 
-/* Link do canal — sublinhado sempre visível, como "JENNIE'S PODCAST" na
-   referência. Usa o mesmo ::after dos outros itens, só que já expandido. */
-.header-nav a.header-canal::after {
-    transform: scaleX(1);
-}
-
 .logo {
-    grid-column: 2;
-    grid-row: 1;
+    flex-shrink: 0;
     font-size: 1.5rem;
     line-height: 1.15;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     color: var(--verde-escuro);
     text-decoration: none;
 }
@@ -517,7 +499,7 @@ img {
 }
 
 /* Card branco sobre fundo bege — sem borda, como na referência. A sombra
-   só aparece no hover, como resposta ao ponteiro. */
+   só aparece no hover, como resposta ao ponteiro. Usado na página Conteúdo. */
 .card {
     display: flex;
     flex-direction: column;
@@ -845,7 +827,7 @@ img {
 }
 
 /* Formulário de palestras — mais campos, então um pouco mais largo */
-.palestras-form {
+.convites-form {
     max-width: 760px;
 }
 
@@ -1009,40 +991,6 @@ img {
 }
 
 /* ==========================================================================
-   Nome ao vento
-   Quatro pontos cardeais da elipse (topo → direita → base → esquerda) com
-   timing linear: a letra orbita a curva em velocidade constante. A leve
-   rotação acompanha o movimento, como se a letra fosse inclinada pela brisa.
-   As amplitudes estão em `em` para escalarem junto com o font-size.
-   ========================================================================== */
-
-@keyframes vento-elipse {
-    0%,
-    100% {
-        transform: translate(0, -0.06em) rotate(-0.5deg);
-    }
-    25% {
-        transform: translate(0.12em, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(0, 0.06em) rotate(0.5deg);
-    }
-    75% {
-        transform: translate(-0.12em, 0) rotate(0deg);
-    }
-}
-
-.letra {
-    /* inline-block é obrigatório: transform não se aplica a inline */
-    display: inline-block;
-    animation: vento-elipse 7s linear infinite;
-    /* delay negativo: cada letra já começa em um ponto diferente da elipse,
-       criando a onda que atravessa a palavra */
-    animation-delay: calc(var(--i, 0) * -0.16s);
-    will-change: transform;
-}
-
-/* ==========================================================================
    Rodapé
    ========================================================================== */
 
@@ -1185,9 +1133,10 @@ img {
     }
 }
 
-/* O header vira menu hamburguer cedo: são seis itens em volta do logo, e
-   abaixo de ~920px eles não cabem sem colidir com o nome centralizado. */
-@media (max-width: 920px) {
+/* O header vira menu hamburguer cedo: são sete itens de menu mais o logo de
+   14 caracteres na mesma linha, e abaixo de ~1040px eles não cabem lado a
+   lado. */
+@media (max-width: 1040px) {
     :root {
         --header-height: 72px;
     }
@@ -1308,10 +1257,6 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .letra {
-        animation: none;
-    }
-
     html {
         scroll-behavior: auto;
     }
