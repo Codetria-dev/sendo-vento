@@ -1,0 +1,10 @@
+# Referências visuais usadas no desenvolvimento — não vão para o repositório
+referencia sv/
+
+# Scripts que redimensionavam essas referências
+resize_refs.py
+resize_refs.ps1
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
