@@ -237,25 +237,6 @@ img {
     background-color: var(--branco);
 }
 
-/* Link de texto com régua embaixo — o CTA secundário da referência */
-.link-regua {
-    display: inline-block;
-    padding-bottom: 6px;
-    border-bottom: 1px solid currentColor;
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--verde-militar);
-    transition: opacity var(--transition);
-}
-
-.link-regua:hover {
-    opacity: 0.6;
-}
-
 /* ==========================================================================
    Header — logo à esquerda, menu alinhado à direita
    ========================================================================== */
@@ -1147,7 +1128,7 @@ img {
 
 .footer-topo {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr auto;
     gap: 48px;
     align-items: center;
     padding: 72px 0 56px;
@@ -1189,14 +1170,6 @@ img {
 
 .footer-marca .logo {
     display: block;
-}
-
-.footer-cta {
-    text-align: center;
-}
-
-.footer-cta .link-regua {
-    color: var(--verde-escuro);
 }
 
 .footer-menu {
