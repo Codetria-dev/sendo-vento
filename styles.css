@@ -11,6 +11,25 @@
    canto reto, cards brancos sobre bege e faixas escuras intercaladas.
    ========================================================================== */
 
+/* --- Fonte da marca -------------------------------------------------------
+   Cormorant Garamond (OFL), self-hosted. Apenas o subset latino, que cobre
+   os acentos do português. */
+@font-face {
+    font-family: "Cormorant Garamond";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/cormorant-garamond-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Cormorant Garamond";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/cormorant-garamond-400-italic.woff2") format("woff2");
+}
+
 :root {
     /* --- Verdes --- */
     --verde-claro: #a9b894;
@@ -38,10 +57,9 @@
     /* Filete fino sobre fundo escuro */
     --linha-escura: rgba(250, 247, 241, 0.28);
 
-    /* Trocar por url(...) quando houver foto do hero */
-    --hero-imagem: none;
+    --hero-imagem: url("assets/hero.jpg");
 
-    --serif: "Georgia", "Times New Roman", serif;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
     --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -59,7 +77,8 @@ html {
 
 body {
     font-family: var(--serif);
-    font-size: 1.0625rem;
+    /* Cormorant tem x-height menor que Georgia — sobe um pouco o corpo */
+    font-size: 1.125rem;
     background-color: var(--branco);
     color: var(--texto);
     line-height: 1.7;
@@ -85,6 +104,18 @@ img {
     display: block;
 }
 
+/* Imagens finais dentro dos espaços reservados. Os containers já têm
+   aspect-ratio definido, então a foto preenche o slot sem causar layout
+   shift e sem distorcer. */
+.produto-midia img,
+.promo-midia img,
+.ebook-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
 ::selection {
     background-color: var(--verde-claro);
     color: var(--verde-noite);
@@ -99,9 +130,38 @@ img {
 /* Sobre fundo escuro o anel escuro desapareceria */
 .hero :focus-visible,
 .faixa :focus-visible,
-.banner-canal :focus-visible,
-.recursos :focus-visible {
+.banner-canal :focus-visible {
     outline-color: var(--verde-claro);
+}
+
+/* Atalho de teclado: primeiro Tab revela o link, que pula a navegação */
+.skip-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 100;
+    padding: 12px 20px;
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transform: translateY(-200%);
+    transition: transform var(--transition);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* O atalho move o foco para o main; um anel em volta da página inteira
+   atrapalha mais do que orienta. */
+#conteudo-principal:focus {
+    outline: none;
 }
 
 .container {
@@ -231,6 +291,7 @@ img {
     display: flex;
     gap: 24px;
     align-items: center;
+    margin-left: auto;
 }
 
 .header-nav a {
@@ -268,6 +329,30 @@ img {
 .header-nav a:hover::after,
 .header-nav a.active::after {
     transform: scaleX(1);
+}
+
+/* CTA de contato — destaque no header sem virar mais um item do menu */
+.header-cta {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid var(--verde-escuro);
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--verde-escuro);
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.header-cta:hover,
+.header-cta:focus-visible {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
 }
 
 .logo {
@@ -321,7 +406,10 @@ img {
 
 .hero {
     position: relative;
-    padding: 150px 0 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: clamp(520px, 46vw, 660px);
+    padding: 35px 0 0;
     background-color: var(--verde-escuro);
     background-image: var(--hero-imagem);
     background-size: cover;
@@ -330,33 +418,56 @@ img {
     color: var(--branco);
 }
 
-/* Véu sobre a foto, para o texto manter contraste */
+/* Véu sobre a foto: mais fechado no topo, onde fica o título, e na base,
+   para o hub continuar legível. O centro fica mais limpo, preservando a foto. */
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(44, 51, 38, 0.5);
+    z-index: 1;
+    background-image: linear-gradient(
+        180deg,
+        rgba(44, 51, 38, 0.7) 0%,
+        rgba(44, 51, 38, 0.3) 52%,
+        rgba(44, 51, 38, 0.72) 100%
+    );
 }
 
-/* Brilho de verde claro descendo do topo — tira o aspecto de bloco chapado */
-.hero::after {
-    content: "";
+/* Segunda foto do banner, alternando com a primeira num fade lento */
+.hero-foto {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(
-        ellipse at 50% 0%,
-        rgba(169, 184, 148, 0.22),
-        rgba(169, 184, 148, 0) 62%
-    );
-    pointer-events: none;
+    z-index: 0;
+    background-image: url("assets/hero-2.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: hero-alterna 18s ease-in-out infinite;
+}
+
+@keyframes hero-alterna {
+    0%,
+    42% {
+        opacity: 0;
+    }
+
+    50%,
+    92% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .hero-inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    align-self: start;
     max-width: 780px;
     margin: 0 auto;
-    padding: 0 32px 90px;
+    padding: 0 32px;
 }
 
 .hero h1 {
@@ -380,7 +491,7 @@ img {
 /* Hub de categorias — a faixa de links com régua na base do hero */
 .hero-hub {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     gap: 10px;
     max-width: 900px;
@@ -484,10 +595,31 @@ img {
     color: var(--texto-suave);
 }
 
+/* Texto corrido longo — política de privacidade e páginas de leitura */
+.prosa h2 {
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--verde-escuro);
+    margin: 44px 0 12px;
+}
+
+.prosa p {
+    margin-bottom: 16px;
+}
+
+.prosa p:last-child {
+    margin-bottom: 0;
+}
+
 /* Grade genérica */
 .grade {
     display: grid;
     gap: 40px;
+}
+
+.grade--2 {
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .grade--3 {
@@ -513,6 +645,7 @@ img {
     box-shadow: var(--sombra);
 }
 
+.card h2,
 .card h3 {
     font-size: 1.4rem;
     font-weight: 400;
@@ -525,6 +658,28 @@ img {
     font-size: 0.88rem;
     line-height: 1.7;
     color: var(--texto-suave);
+}
+
+/* Vídeos incorporados — player do YouTube em proporção 16:9 */
+.video-embed {
+    aspect-ratio: 16 / 9;
+    background-color: var(--verde-escuro);
+    overflow: hidden;
+}
+
+.video-embed iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video h3 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--verde-escuro);
+    margin-top: 18px;
 }
 
 /* Depoimento em card claro — citação + autor */
@@ -593,6 +748,7 @@ img {
     text-transform: uppercase;
 }
 
+.produto h2,
 .produto h3 {
     font-size: 1.3rem;
     font-weight: 400;
@@ -638,6 +794,18 @@ img {
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+}
+
+/* Foto retrato na página Sobre: preenche o slot sem o fundo de placeholder */
+.promo-midia.promo-midia--retrato {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
 }
 
 .promo h2 {
@@ -686,49 +854,6 @@ img {
     text-transform: uppercase;
     color: var(--branco);
     margin-bottom: 36px;
-}
-
-/* ==========================================================================
-   Faixa de recursos — links serif separados por barra
-   ========================================================================== */
-
-.recursos {
-    padding: 80px 0;
-    background-color: var(--verde-escuro);
-    text-align: center;
-}
-
-/* As duas réguas que emolduram o bloco, como na referência */
-.recursos-inner {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 36px 32px;
-    border-top: 1px solid var(--linha-escura);
-    border-bottom: 1px solid var(--linha-escura);
-}
-
-.recursos-lista {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.recursos-lista a {
-    padding: 6px 28px;
-    border-right: 1px solid var(--linha-escura);
-    font-size: clamp(1.1rem, 2.4vw, 1.6rem);
-    color: var(--branco);
-    text-decoration: none;
-    transition: color var(--transition);
-}
-
-.recursos-lista a:last-child {
-    border-right: none;
-}
-
-.recursos-lista a:hover {
-    color: var(--verde-claro);
 }
 
 /* ==========================================================================
@@ -804,6 +929,25 @@ img {
     flex-shrink: 0;
     margin-top: 4px;
     accent-color: var(--verde-claro);
+}
+
+/* Honeypot — fora da tela em vez de display: none, porque robôs que checam
+   visibilidade ainda encontram o campo e o preenchem. Pessoas nunca passam
+   por ele (fora da ordem de tabulação e oculto de leitores de tela). */
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Aviso exibido quando o formulário ainda não tem endpoint */
+.form-aviso {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--texto);
 }
 
 /* Seção de contato — escura, com o formulário alinhado à esquerda */
@@ -923,7 +1067,7 @@ img {
     text-transform: uppercase;
 }
 
-.ebook-content h1 {
+.ebook-content h2 {
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 400;
     line-height: 1.25;
@@ -1092,10 +1236,6 @@ img {
     color: var(--texto-claro);
 }
 
-.footer-base a {
-    color: var(--texto-claro);
-}
-
 /* ==========================================================================
    Responsivo
    ========================================================================== */
@@ -1103,33 +1243,6 @@ img {
 @media (max-width: 1080px) {
     .grade--4 {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 900px) {
-    .grade--3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .promo {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .ebook {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        margin-bottom: 72px;
-    }
-
-    .ebook-cover {
-        max-width: 260px;
-        margin: 0 auto;
-    }
-
-    .footer-topo {
-        grid-template-columns: 1fr;
-        gap: 40px;
     }
 }
 
@@ -1180,6 +1293,7 @@ img {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
+        margin-left: 0;
     }
 
     .header-menus .header-nav a {
@@ -1187,12 +1301,15 @@ img {
         border-bottom: 1px solid var(--bege);
     }
 
-    .hero {
-        padding-top: 100px;
+    .header-menus .header-cta {
+        display: block;
+        margin: 20px 32px 24px;
+        text-align: center;
     }
 
-    .hero-inner {
-        padding-bottom: 64px;
+    .hero {
+        min-height: 600px;
+        padding-top: 48px;
     }
 
     .hero-hub {
@@ -1210,23 +1327,6 @@ img {
         padding: 80px 0;
     }
 
-    .recursos {
-        padding: 64px 0;
-    }
-
-    .recursos-lista {
-        flex-direction: column;
-    }
-
-    .recursos-lista a {
-        border-right: none;
-        border-bottom: 1px solid var(--linha-escura);
-    }
-
-    .recursos-lista a:last-child {
-        border-bottom: none;
-    }
-
     .section-head {
         margin-bottom: 48px;
     }
@@ -1237,6 +1337,37 @@ img {
 
     .container {
         padding: 0 24px;
+    }
+}
+
+@media (max-width: 900px) {
+    .grade--2 {
+        grid-template-columns: 1fr;
+    }
+
+    .grade--3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .promo {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .ebook {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 72px;
+    }
+
+    .ebook-cover {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .footer-topo {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 }
 
@@ -1261,12 +1392,24 @@ img {
         scroll-behavior: auto;
     }
 
+    /* Mantém só a primeira foto do banner (e evita baixar a segunda) */
+    .hero-foto {
+        display: none;
+    }
+
     .btn:hover,
     .btn:active {
         transform: none;
     }
 
+    .btn,
+    .skip-link,
+    .site-header,
+    .header-menus,
+    .menu-toggle span,
+    .hero-hub a,
     .header-nav a::after,
+    .header-cta,
     .card,
     .depoimento {
         transition: none;

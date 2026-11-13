@@ -5,23 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Você Tem Jeito - fé, propósito e caminhada.">
     <title>Você Tem Jeito</title>
+    <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#ece5d7">
+    <link rel="preload" href="assets/fonts/cormorant-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+
     <header class="site-header" id="site-header">
         <div class="container header-inner">
             <a class="logo" href="#home">Você Tem Jeito</a>
 
             <div class="header-menus" id="menu-mobile">
                 <nav class="header-nav" aria-label="Menu principal">
-                    <a href="#home" class="active">Home</a>
+                    <a href="#home" class="active" aria-current="page">Home</a>
                     <a href="sobre.html">Sobre</a>
                     <a href="conteudo.html">Conteúdo</a>
                     <a href="livros.html">Livros</a>
                     <a href="historias.html">Histórias</a>
-                    <a href="convites.html">Convites</a>
-                    <a href="#contato">Contato</a>
                 </nav>
+                <a class="header-cta" href="#contato">Contato</a>
             </div>
 
             <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
@@ -32,9 +39,11 @@
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal" tabindex="-1">
         <!-- Hero -->
         <section class="hero" id="home">
+            <div class="hero-foto" aria-hidden="true"></div>
+
             <div class="hero-inner">
                 <h1>Você Tem Jeito</h1>
                 <p class="hero-sub">Fé &middot; Propósito &middot; Caminhada</p>
@@ -45,7 +54,6 @@
                 <a href="conteudo.html">Conteúdo</a>
                 <a href="livros.html">Livros</a>
                 <a href="historias.html">Histórias</a>
-                <a href="convites.html">Convites</a>
             </nav>
         </section>
 
@@ -112,8 +120,7 @@
         <section class="banner-canal">
             <h2>Você Tem Jeito no YouTube</h2>
             <p>Vídeos novos toda semana</p>
-            <!-- TODO: trocar o # pela URL do canal no YouTube -->
-            <a class="btn btn--claro" href="#" rel="noopener" target="_blank">Assistir no YouTube</a>
+            <a class="btn btn--claro" href="https://www.youtube.com/@giovannalordeiro" target="_blank" rel="noopener noreferrer">Assistir no YouTube</a>
         </section>
 
         <!-- Histórias -->
@@ -151,21 +158,17 @@
                         <label for="contato-mensagem">Mensagem <em>(obrigatório)</em></label>
                         <textarea id="contato-mensagem" name="MENSAGEM" rows="6" required></textarea>
                     </div>
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="hp-contato">Não preencha este campo</label>
+                        <input type="text" id="hp-contato" name="WEBSITE" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <p class="form-aviso" role="status" hidden>
+                        O envio ainda está sendo configurado. Nenhum dado foi enviado.
+                    </p>
+
                     <button type="submit" class="btn">Enviar mensagem</button>
                 </form>
-            </div>
-        </section>
-
-        <!-- Recursos -->
-        <section class="recursos">
-            <div class="recursos-inner">
-                <p class="eyebrow eyebrow--claro">Outros recursos</p>
-                <nav class="recursos-lista" aria-label="Recursos">
-                    <a href="convites.html">Convites</a>
-                    <a href="livros.html">Livros</a>
-                    <a href="historias.html">Histórias</a>
-                    <a href="ebooks.html">Ebooks</a>
-                </nav>
             </div>
         </section>
     </main>
@@ -176,8 +179,8 @@
                 <div class="footer-bio">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
                     <div class="footer-redes">
-                        <a href="#">Instagram</a>
-                        <a href="#">YouTube</a>
+                        <a href="https://www.instagram.com/giovannalordeiro" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.youtube.com/@giovannalordeiro" target="_blank" rel="noopener noreferrer">YouTube</a>
                         <a href="#">Facebook</a>
                     </div>
                 </div>
@@ -203,6 +206,7 @@
                 <a href="#contato">Contato</a>
                 <!-- TODO: trocar o # pela URL da plataforma de doações -->
                 <a href="#">Doações</a>
+                <a href="privacidade.html">Privacidade</a>
             </nav>
         </div>
 

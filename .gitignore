@@ -5,6 +5,21 @@ referencia sv/
 resize_refs.py
 resize_refs.ps1
 
+# Fotos originais em alta resolução (8–13 MB cada) — só as versões
+# otimizadas entram no repositório (hero.jpg, hero-2.jpg, sobre.jpg)
+assets/1-perfil.JPG
+assets/banner yt.JPG
+assets/banner2.JPG
+assets/profile2.JPG
+assets/quemSou.JPG
+assets/saiba mais.JPG
+assets/sobremim.JPG
+
+# Segredos e configuração local — nunca versionar
+.env
+.env.*
+.vercel/
+
 # Arquivos do sistema operacional
 .DS_Store
 Thumbs.db

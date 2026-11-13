@@ -5,23 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Baixe o ebook gratuito de Você Tem Jeito - fé, propósito e caminhada.">
     <title>Ebooks — Você Tem Jeito</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#ece5d7">
+    <link rel="preload" href="assets/fonts/cormorant-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+
     <header class="site-header" id="site-header">
         <div class="container header-inner">
             <a class="logo" href="index.html">Você Tem Jeito</a>
 
             <div class="header-menus" id="menu-mobile">
                 <nav class="header-nav" aria-label="Menu principal">
-                    <a href="index.html">Home</a>
+                    <a href="index.html#home">Home</a>
                     <a href="sobre.html">Sobre</a>
                     <a href="conteudo.html">Conteúdo</a>
                     <a href="livros.html">Livros</a>
                     <a href="historias.html">Histórias</a>
-                    <a href="convites.html">Convites</a>
-                    <a href="index.html#contato">Contato</a>
                 </nav>
+                <a class="header-cta" href="index.html#contato">Contato</a>
             </div>
 
             <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
@@ -32,7 +38,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="conteudo-principal" tabindex="-1">
         <section class="section">
             <div class="container">
                 <header class="section-head">
@@ -73,6 +79,9 @@
                         TODO (Brevo): trocar o action pelo endpoint do formulário
                         do Brevo e alinhar os `name` dos campos com os atributos
                         da lista (EMAIL, FIRSTNAME...).
+                        Ao fazer isso, liberar o domínio do Brevo no `form-action`
+                        do Content-Security-Policy em vercel.json, senão o envio
+                        é bloqueado pelo navegador.
                     -->
                     <form class="ebook-form" action="" method="POST">
                         <div class="campo">
@@ -93,21 +102,18 @@
                             </span>
                         </label>
 
+                        <div class="honeypot" aria-hidden="true">
+                            <label for="hp-ebook">Não preencha este campo</label>
+                            <input type="text" id="hp-ebook" name="WEBSITE" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <p class="form-aviso" role="status" hidden>
+                            O envio ainda está sendo configurado. Nenhum dado foi enviado.
+                        </p>
+
                         <button type="submit" class="btn btn--largo">Quero receber o ebook</button>
                     </form>
                 </div>
-            </div>
-        </section>
-
-        <section class="recursos">
-            <div class="recursos-inner">
-                <p class="eyebrow eyebrow--claro">Outros recursos</p>
-                <nav class="recursos-lista" aria-label="Recursos">
-                    <a href="convites.html">Convites</a>
-                    <a href="livros.html">Livros</a>
-                    <a href="historias.html">Histórias</a>
-                    <a href="produtos.html">Produtos</a>
-                </nav>
             </div>
         </section>
     </main>
@@ -118,8 +124,8 @@
                 <div class="footer-bio">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
                     <div class="footer-redes">
-                        <a href="#">Instagram</a>
-                        <a href="#">YouTube</a>
+                        <a href="https://www.instagram.com/giovannalordeiro" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.youtube.com/@giovannalordeiro" target="_blank" rel="noopener noreferrer">YouTube</a>
                         <a href="#">Facebook</a>
                     </div>
                 </div>
@@ -145,6 +151,7 @@
                 <a href="index.html#contato">Contato</a>
                 <!-- TODO: trocar o # pela URL da plataforma de doações -->
                 <a href="#">Doações</a>
+                <a href="privacidade.html">Privacidade</a>
             </nav>
         </div>
 
